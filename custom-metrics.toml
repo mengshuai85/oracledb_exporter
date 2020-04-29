@@ -1,0 +1,12 @@
+[[metric]]
+context = "test"
+request = "SELECT 1 as value_1, 2 as value_2, 'First label' as label_1, 'Second label' as label_2 FROM DUAL"
+metricsdesc = { value_1 = "Simple example returning always 1 as counter.", value_2 = "Same but returning always 2 as gauge." }
+# Can be counter or gauge (default)
+metricstype = { value_1 = "counter" }
+
+[[metric]]
+context = "archive"
+labels = [ "file_type"]
+request = "select file_type,PERCENT_SPACE_USED as percent_space_used from v$flash_recovery_area_usage where file_type='ARCHIVED LOG'"
+metricsdesc = { percent_space_used = "PERCENT_SPACE_USED."}
